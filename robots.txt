@@ -1,0 +1,4 @@
+User-agent: *
+Allow:/
+
+Sitemap: http://hanheesong.github.io/sitemap.xml

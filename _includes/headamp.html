@@ -1,0 +1,183 @@
+<meta charset="utf-8">
+<title>{{ site.title }}-{% if page.title %}{{page.title}}{% endif %}</title>
+{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+<link rel="canonical" href="{{ canonical }}">
+
+<!--google analytics-->
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
+
+{% if site.owner.twitter %}<!-- Twitter Cards -->
+{% if page.image.feature %}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ site.url }}/images/{{ page.image.feature }}">
+{% else %}<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/images/{{ page.image.thumb }}{% else %}{{ site.url }}/images/{{ site.logo }}{% endif %}">{% endif %}
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta name="twitter:creator" content="@{{ site.owner.twitter }}">{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+
+{% if site.google_verify %}<meta name="google-site-verification" content="{{ site.google_verify }}">{% endif %}
+{% if site.bing_verify %}<meta name="msvalidate.01" content="{{ site.bing_verify }}">{% endif %}
+
+
+<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+<!-- Google ad -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7292473583012523",
+    enable_page_level_ads: true
+  });
+</script>
+
+<!-- amp script -->
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="{{ site.url }}/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="{{ site.url }}/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="{{ site.url }}/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.url }}/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.url }}/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.url }}/images/apple-touch-icon-144x144-precomposed.png">
+
+
+{% if page.image.background or site.background %}
+{% capture background %}{% if page.image.background %}{{ page.image.background }}{% else %}{{ site.background }}{% endif %}{% endcapture %}
+{% unless background contains 'http://' or background contains 'https://' %}{% capture background %}{{ site.url }}/images/{{ background }}{% endcapture %}{% endunless %}
+<style amp-custom>body {background-image:url({{ background }});}</style>
+{% endif %}
+<style amp-custom>
+.header {position: fixed;top: 0;width: 100%;height: 315px;background-color: #e8e8e8;overflow: hidden;-webkit-transition: height 0.3s;-moz-transition: height 0.3s;transition: height 0.3s;text-align: center;line-height: 160px;z-index: 999;}
+.header.shrink {height: 70px;line-height: 125px;}
+.header h3{display: inline;font-size: 50px;font-family: 'La Belle Aurore',cursive;-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;position: relative;top: -31px;}
+.header a img{border-radius: 50%;}
+.header.shrink .pf_wrapper{display: none;}
+.header.shrink h3{font-size:30px;-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;}
+.dl-menuwrapper{-webkit-transition: all 0.3s;-moz-transition: all 0.3s;transition: all 0.3s;}
+.main {position: fixed;max-width: 100%;width: 991px;margin: auto;z-index: 999;}
+input[type="checkbox"]#search + label {display: inline-block;margin: 15px;position:fixed;top: 0;right: 0;z-index: 9999;}
+input[type="checkbox"]#search + label span {float: left;position: relative;top: -3px;left: 0; -webkit-transition: all 0.5s ease-in-out 0.1s;transition: all 0.5s;ease-in-out 0.1s;font-size: 42px;}
+input[type="checkbox"]#search + label span:hover {color: #222;}
+input[type="checkbox"]#search + label:hover {cursor: pointer;}
+input[type="checkbox"]#search:checked + label span {olor: #FFF;}
+input[type="checkbox"]#search:checked ~ main section.search {opacity: 1;visibility:visible;top: 0;height: 100vh;z-index: 99;}
+input[type="checkbox"]#search:checked ~ main section.search form {top: 40vh;}
+section.search {width: 100%;height: 100vh;position: fixed;top: 0;left: 0;background:-webkit-linear-gradient(top, black 0, rgba(0, 0, 0, 0.75) 50%, transparent 100%);background: linear-gradient(top, black 0, rgba(0, 0, 0, 0.75) 50%, transparent 100%);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.5s ease-in-out 0.1s;
+  transition: all 0.5s ease-in-out 0.1s;
+}
+section.search form {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.5s ease-in-out 0.1s;
+  transition: all 0.5s ease-in-out 0.1s;
+  width: 991px;
+  max-width: 100%;
+  height: 50vh;
+}
+section.search form .advanced {
+  float: left;
+  width: 100%;
+  padding: 20px 0;
+}
+section.search form input {
+  font-family: "Telefon Black", Sans-Serif;
+  color: #FFFFFF;
+}
+section.search form input[type="search"]:focus {
+  border-color: white;
+  color: white;
+  outline: 0px;
+}
+section.search form input + label {
+  font-family: "Telefon Black", Sans-Serif;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 0 12px 0 2px;
+  color: #666;
+}
+.pf_wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 10px auto;
+  overflow: hidden;
+  border-radius: 50%;
+  padding-top:0!important;
+  padding-bottom: 0!important;
+}
+.pf_wrapper::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: '';
+  opacity: 0.2;
+  width: 50px;
+  height: 100%;
+  background: #fff;
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+}
+.pf_wrapper:hover::before {
+  -webkit-animation: shine 1s;
+  animation: shine 1s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+#results-container {position: absolute;top: 117px;left: -43px;}
+#results-container li{list-style: none;height: 30px;line-height: 30px;}
+#results-container li:hover a{color: #000;}
+#results-container li a{color: #fff;font-size: 1.25em;}
+</style>
